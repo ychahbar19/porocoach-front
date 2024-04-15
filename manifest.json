@@ -2,32 +2,108 @@
   "manifest_version": 1,
   "type": "WebApp",
   "meta": {
-    "name": "Demo App",
+    "name": "Porocoach",
     "version": "1.0.0",
-    "minimum-overwolf-version": "0.77.10",
-    "author": "Developer Name",
+    "minimum-overwolf-version": "0.120.0",
+    "author": "Overwolf",
     "icon": "IconMouseOver.png",
     "icon_gray": "IconMouseNormal.png",
     "launcher_icon": "desktop-icon.ico",
-    "description": "Demo App"
+    "window_icon": "IconMouseNormal.png",
+    "description": "My coaching app"
   },
+  "permissions": [
+    "Hotkeys",
+    "Extensions",
+    "Streaming",
+    "Profile",
+    "GameInfo",
+    "DesktopStreaming"
+  ],
   "data": {
-    "start_window": "MainWindow",
+    "game_targeting": {
+      "type": "dedicated",
+      "game_ids": [
+        5426
+      ]
+    },
+    "launch_events": [
+      {
+        "event": "GameLaunch",
+        "event_data": {
+          "game_ids": [
+            5426
+          ]
+        },
+        "start_minimized": false
+      }
+    ],
+    "hotkeys": {
+      "sample_app_showhide": {
+        "title": "Show/Hide In-Game Window",
+        "action-type": "toggle",
+        "default": "Ctrl+F"
+      }
+    },
+    "game_events": [
+      5426
+    ],
+    "start_window": "desktop",
+    "enable_top_isolation": true,
     "windows": {
-      "MainWindow": {
-        "file": "index.html",
+      "background": {
+        "file": "dist/index.html",
+        "background_optimization": false,
+        "is_background_page": true
+      },
+      "desktop": {
+        "file": "dist/index.html",
+        "use_os_windowing": true,
+        "show_in_taskbar": true,
+        "native_window": false,
         "transparent": false,
         "resizable": true,
-        "use_os_windowing": true,
         "size": {
-          "width": 700,
-          "height": 400
+          "width": 1212,
+          "height": 699
         },
         "min_size": {
-          "width": 400,
-          "height": 400
-        }
+          "width": 1212,
+          "height": 699
+        },
+        "max_size": {
+          "width": 1212,
+          "height": 699
+        },
+        "desktop_only": true,
+        "is_background_page": false
       }
+    },
+    "protocol_override_domains": {
+      "googlesyndication": "http"
+    },
+    "block_top_window_navigation": false,
+    "popup_blocker": true,
+    "mute": true,
+    "externally_connectable": {
+      "matches": [
+        "http://*.overwolf.com",
+        "https://*.overwolf.com",
+        "https://overwolf.github.io",
+        "https://*.google-analytics.com",
+        "http://*.google-analytics.com",
+        "https://www.googleapis.com",
+        "https://discord.gg/v5cfBTq",
+        "https://twitter.com/",
+        "https://www.facebook.com",
+        "https://www.reddit.com"
+      ]
+    },
+    "force_browser": "user",
+    "developer": {
+      "enable_auto_refresh": true,
+      "reload_delay": 1000,
+      "filter": "*.*"
     }
   }
 }
